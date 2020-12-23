@@ -1,0 +1,29 @@
+// package main
+
+// func birthdayCakeCandles(candles []int32) int32 {
+
+// 	maximumHeight := int32(0)
+// 	count := int32(0)
+
+// 	for _, candle := range candles {
+// 		if candle == maximumHeight {
+// 			count++
+// 		}
+// 		if candle > maximumHeight {
+// 			maximumHeight = candle
+// 			count = 1
+// 		}
+
+// 	}
+
+// 	return count
+
+// }
+
+// func main() {
+
+// 	sampleCandleArray := []int32{5, 6, 21, 2, 1, 213, 12, 4, 1, 2, 12, 1, 2, 43, 66, 666, 666, 666, 666}
+
+// 	birthdayCakeCandles(sampleCandleArray)
+
+// }

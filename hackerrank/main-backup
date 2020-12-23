@@ -1,0 +1,92 @@
+// package main
+
+// import "fmt"
+
+// // /*
+// //  * Complete the simpleArraySum function below.
+// //  */
+// // func simpleArraySum(ar []int32) int32 {
+// // 	sum := int32(0)
+// // 	for _, number := range ar {
+// // 		sum = sum + number
+// // 	}
+// // 	return sum
+// // }
+
+// // // Complete the compareTriplets function below.
+// // func compareTriplets(a []int32, b []int32) []int32 {
+// // 	returnArray := []int32{0, 0}
+// // 	lengthOfArray := len(a)
+// // 	if len(b) < lengthOfArray {
+// // 		lengthOfArray = len(b)
+// // 	}
+
+// // 	for i := 0; i < lengthOfArray; i++ {
+// // 		if a[i] > b[i] {
+// // 			returnArray[0]++
+// // 		}
+// // 		if a[i] < b[i] {
+// // 			returnArray[1]++
+// // 		}
+// // 	}
+
+// // 	return returnArray
+// // }
+
+// // Complete the aVeryBigSum function below.
+// func aVeryBigSum(ar []int64) int64 {
+// 	veryBigSum := int64(0)
+// 	for _, number := range ar {
+// 		veryBigSum += number
+// 	}
+// 	return veryBigSum
+
+// }
+
+// /*
+//  * Complete the 'diagonalDifference' function below.
+//  *
+//  * The function is expected to return an INTEGER.
+//  * The function accepts 2D_INTEGER_ARRAY arr as parameter.
+//  */
+
+// func diagonalDifference(arr [][]int32) int32 {
+// 	if len(arr) == 0 || len(arr[0]) == 0 {
+// 		return 0
+// 	}
+
+// 	lengthOfSquare := len(arr[0])
+
+// 	rightDiagonalSum := int32(0)
+// 	leftDiagonalSum := int32(0)
+// 	for i := 0; i < lengthOfSquare; i++ {
+// 		rightDiagonalSum += arr[i][i]
+// 	}
+// 	columnIndex := lengthOfSquare - 1
+// 	for i := 0; i < lengthOfSquare; i++ {
+// 		leftDiagonalSum += arr[i][columnIndex]
+// 		columnIndex--
+// 	}
+
+// 	if rightDiagonalSum > leftDiagonalSum {
+// 		return (rightDiagonalSum - leftDiagonalSum)
+// 	}
+
+// 	return (leftDiagonalSum - rightDiagonalSum)
+
+// }
+
+// func main() {
+
+// 	matrix := [][]int32{}
+
+// 	for i := 0; i < 3; i++ {
+// 		row := []int32{}
+// 		for j := 0; j < 3; j++ {
+// 			number := int32(i + j)
+// 			row = append(row, number)
+// 		}
+// 		matrix = append(matrix, row)
+// 	}
+// 	fmt.Println(diagonalDifference(matrix))
+// }

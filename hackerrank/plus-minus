@@ -1,0 +1,46 @@
+// package main
+
+// import "fmt"
+
+// // Complete the plusMinus function below.
+// func plusMinus(arr []int32) {
+
+// 	var positiveNumbers float32 = 0
+// 	var negativeNumbers float32 = 0
+// 	var zeroNumbers float32 = 0
+// 	var allNumberLength float32 = float32(len(arr))
+
+// 	if allNumberLength == 0 {
+// 		fmt.Println("0")
+// 		fmt.Println("0")
+// 		fmt.Println("0")
+// 	}
+
+// 	for _, number := range arr {
+
+// 		if number > 0 {
+// 			positiveNumbers++
+// 		}
+
+// 		if number == 0 {
+// 			zeroNumbers++
+// 		}
+
+// 		if number < 0 {
+// 			negativeNumbers++
+// 		}
+
+// 	}
+
+// 	fmt.Printf("%5f\n", positiveNumbers/allNumberLength)
+// 	fmt.Printf("%5f\n", negativeNumbers/allNumberLength)
+// 	fmt.Printf("%5f", zeroNumbers/allNumberLength)
+
+// }
+
+// func main() {
+
+// 	arr := []int32{-4, 3, -9, 0, 4, 1}
+// 	plusMinus(arr)
+
+//

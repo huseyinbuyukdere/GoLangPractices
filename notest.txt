@@ -1,0 +1,221 @@
+Example Codes Are Here -> https://github.com/StephenGrider/GoCasts
+
+
+Commands For Go
+    Run     -> go run main.go
+    Build   -> go build // just compile the code and generates executable file
+    Format  -> go fmt // format codes
+    Install Dependencies -> go Install || go get
+    Test    -> go test // run tests associated with the current project
+
+
+
+package key word means Project, Workspace,Namespace
+
+There are 2 type of package 
+
+-> Executable , when compile, generates runnable file.
+-> Reusable , libraries, helpers
+
+For defining type -> 
+    if package == main ->>>> executable type package, IMPORTANT !!! must have func called main
+    if package != main ->>>> reusable type 
+
+import "fmt" // it can be standart lib or reusable packages
+
+
+Course Diagrams -> https://github.com/StephenGrider/GoCasts/tree/master/diagrams -> open with draw.io
+
+
+Variable Declaration 
+  
+  var variableName TypeOfVariable = defaultvalue
+  or
+  variableName := value
+
+Function Declaration
+
+  func functionName() returnType{
+
+  }
+  or
+  func functionName() {
+      
+  }
+
+List in Go  
+  Array -> fixed length list 
+  Slice -> an array that can grow or shrink 
+    sliceName :=[]typeOfSlice{defaultValue1,defaultValue2}
+    var sliceName = []typeOfSlice{"variable","variable2"}
+    adding -> sliceName = Append(sliceName, newValue)
+  Must have identical type
+
+For Loops For Slices
+  for index, element:= range elements {
+     fmt.Println(element)
+  }
+
+U Declared But Never Used Error
+  Come down please replace variable with "_"
+
+Receiver
+  Declare Type
+    ** type nameOfType type
+  Receiver Function
+    --> 
+      func (receivedValue ReceiverType) functionName(othervalue,otherValue2) returnType{
+
+      }
+  When u want to use recevivers with type u will
+    --> var variableName TypeName = Value
+        varaibleName.receiverFunctionCall(othervalue,otherValue2)
+
+Get SubSet of Slices    
+  Slice[startIncludingIndex: notIncludingIndex]
+  var sliceVariable = []string{"Konya","Karaman","Kayseri"}
+  sliceVariable[0:2] -> "Konya","Karaman" ------ Kayseri not included.
+  sliceVariable[:2] -> "Konya","Karaman" -------- 
+  sliceVariable[2:] -> "Kayseri"
+
+Return Multiple Values From Go
+  func functionName() (type1,type2){
+    return variable1,variable2
+  }
+
+  While getting multiple Values
+
+  variableFromFunction1,variableFromFunction2 := functionName();  
+
+Type Conversion
+  TypeName(ValueWillConvert)
+
+Interesting Syntax
+
+  	newPosition := rand.Intn(len(cards))
+		tempValue := cards[newPosition]
+		cards[newPosition] = card
+		cards[index] = tempValue
+
+    Exchanging or replacing value, the instructor used this, u will understand
+    cards[index], cards[newPosition] = cards[newPosition], cards[index]
+
+Testing Code
+  If you want to test code, you need to write file as fileName_test.go
+  in test file , test methods have to start with TestMethodName
+  you need to pass Testing helper value to the test funtions like below
+  func TestNewDeck(t *testing.T) {
+
+  }
+  run "go test" will execute tests.
+
+
+Struct
+  Collection of properties that are related together
+  defining Struct 
+    type structName struct {
+      propertyName propertyType
+      propertyName2 propertyType
+    }
+  declaring Struct Variable
+    variableName := structName{}
+    variableName := structName(prop1initialValue,prop2initialValue)
+    variableName := structName{ prop1: initialValue, prop2: initialValue}
+    var variableName = structName{}
+  embedded Struct
+    type structName struct{
+      structProp structType
+    }
+    structName.structProp
+    OR
+    type structName struct {
+      structType
+    }
+    structName.structType....
+  Pass By Reference To Receiver Function
+    You need to pass pointer to the function to see the updates in function in outside of function
+    pointerName := &structVariable
+    // "&" character give us the address of the ram, its name is pointer-> pointing the addresss
+    structVariable.updateProp("newpropName")
+    //UpdatingValue in receiver function
+    func (pointerVariable *structName) updateProps(newName string)
+    {
+      // the *structType shows us the pointer type of struct
+      (*pointerVariable).name = newName
+      //start with the * shows that it is a variable
+    }
+
+Value Type && Reference Type
+  Value Types
+    int,float,string,bool,structs
+    While updating this types in function, use pointers
+  Reference Types
+    slices,maps,functions,channels,pointers
+    Do not worry about pointers of these types
+Maps 
+  Container of Key Values like Object in Javascript
+  All the keys have same type and all the values have same type
+  **Declaration
+    mapName:=map[typeOfKey]typeOfValue{
+      "key1" : "value1",
+      key2, "value2"
+    }
+    var mapName map[typeOfKey]typeOfValue
+    mapName:=make(map[typeOfKey]typeOfValue)
+  Add Key Value
+    mapName[NewKey] = NewValue
+  Delete Key Value 
+    delete(mapName,willDeleteKey)
+  Iteration
+    for key, value :=range map{
+
+    }
+Interfaces 
+  **Declaration
+    type interfaceName interface{
+      functionName(type1,type2,type3) returnType1,returnType2,returnType3
+    }
+  Using in function
+    if a function use this interface like above, you accept types that have
+    function which name is functionName
+    
+    func someFunction(honoraryType interfaceName){
+      honoraryType.functionName()
+    }    
+  There is no link with the type Directly
+    Interfaces are implict
+
+Defer 
+  **Declaration
+    defer func(){
+      // Here will work after all the function ends
+    } ()
+
+    defer io.copy()
+Go KeyWork
+  **Declaration
+    it executes the function by new go routine
+    go functionName()
+    go func() {
+      function declaration here
+    }()
+
+Channels
+  **Declaration
+    channelName := make(chan channelType)    
+  Send Message To Channel
+    channelName <- Message
+  Listen Channel
+    receivedMessage <- channelName
+
+ProjectStructure
+  Group By Function 
+    presentation
+    businessLogic
+    external Dependencies/infrastructre
+    
+
+
+
+
+

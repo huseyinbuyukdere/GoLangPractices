@@ -1,0 +1,32 @@
+package main
+
+import (
+	"fmt"
+	"strconv"
+)
+
+/*
+ * Complete the timeConversion function below.
+ */
+func timeConversion(s string) string {
+	result := ""
+
+	if s[8] == 'P' {
+		hour, _ := strconv.ParseInt(s[0:2], 0, 32)
+		fmt.Println(hour)
+		hour += 12
+		result = fmt.Sprintf("%d%s", hour, s[2:8])
+		return result
+	}
+
+	result = s[0:8]
+	return result
+}
+
+func main() {
+
+	result := timeConversion("07:05:45AM")
+
+	fmt.Println(result)
+
+}

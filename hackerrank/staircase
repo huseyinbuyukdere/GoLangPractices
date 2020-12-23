@@ -1,0 +1,24 @@
+// package main
+
+// import "fmt"
+
+// // Complete the staircase function below.
+// func staircase(n int32) {
+
+// 	for i := int32(0); i < n; i++ {
+// 		for j := int32(0); j < (n - 1 - i); j++ {
+// 			fmt.Printf(" ")
+// 		}
+// 		for j := int32(0); j <= i; j++ {
+// 			fmt.Printf("#")
+// 		}
+
+// 		fmt.Printf("\n")
+// 	}
+
+// }
+
+// func main() {
+
+// 	staircase(5)
+// }

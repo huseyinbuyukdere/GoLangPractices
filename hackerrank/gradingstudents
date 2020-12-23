@@ -1,0 +1,38 @@
+// package main
+
+// // LimitValue is a rounding limit value
+// const LimitValue int32 = 38
+
+// // LimitRange is a rounding limit range value
+// const LimitRange int32 = 3
+
+// func gradingStudents(grades []int32) []int32 {
+// 	newGrades := []int32{}
+// 	modRange := int32(0)
+// 	for _, grade := range grades {
+// 		if grade < LimitValue {
+// 			newGrades = append(newGrades, grade)
+// 			continue
+// 		}
+
+// 		modRange = grade % 5
+// 		modRange = 5 - modRange
+// 		if modRange >= LimitRange {
+// 			newGrades = append(newGrades, grade)
+// 			continue
+// 		}
+
+// 		newGrades = append(newGrades, grade+modRange)
+
+// 	}
+
+// 	return newGrades
+// }
+
+// func main() {
+
+// 	grades := []int32{5, 8, 10, 38, 24, 42, 11, 67, 54, 67, 89, 90}
+
+// 	gradingStudents(grades)
+
+// }

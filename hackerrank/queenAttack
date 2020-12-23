@@ -1,0 +1,238 @@
+// package main
+
+// //Complete the queensAttack function below.
+// func queensAttack(n int32, k int32, rQ int32, cQ int32, obstacles [][]int32) int32 {
+
+// 	sumAvailableSq := int32(0)
+// 	foundIndex := -1
+// 	rowIndex := int32(rQ)
+// 	columnIndex := int32(cQ) - 1
+// 	isObstacleExist := false
+// 	// Left
+// 	if len(obstacles) > 0 {
+// 		rowIndex := int32(rQ)
+// 		columnIndex := int32(cQ) - 1
+// 		isObstacleExist := false
+// 		for columnIndex > 0 && isObstacleExist == false {
+// 			foundIndex = isObstacleExistInSquare(obstacles, rowIndex, columnIndex)
+// 			if foundIndex != -1 {
+
+// 				obstacles = RemoveIndex(obstacles, foundIndex)
+// 				isObstacleExist = true
+// 				continue
+// 			}
+
+// 			sumAvailableSq++
+
+// 			columnIndex--
+// 		}
+// 	} else {
+// 		sumAvailableSq += (cQ - 1)
+// 	}
+
+// 	// Right
+// 	if len(obstacles) > 0 {
+
+// 		rowIndex = int32(rQ)
+// 		columnIndex = int32(cQ) + 1
+// 		isObstacleExist = false
+// 		for columnIndex <= n && isObstacleExist == false {
+// 			foundIndex = isObstacleExistInSquare(obstacles, rowIndex, columnIndex)
+// 			if foundIndex != -1 {
+
+// 				obstacles = RemoveIndex(obstacles, foundIndex)
+// 				isObstacleExist = true
+// 				continue
+// 			}
+
+// 			sumAvailableSq++
+
+// 			columnIndex++
+// 		}
+// 	} else {
+// 		sumAvailableSq += (n - cQ)
+// 	}
+
+// 	//Up
+// 	if len(obstacles) > 0 {
+// 		rowIndex = int32(rQ) - 1
+// 		columnIndex = int32(cQ)
+// 		isObstacleExist = false
+// 		for rowIndex > 0 && isObstacleExist == false {
+// 			foundIndex = isObstacleExistInSquare(obstacles, rowIndex, columnIndex)
+// 			if foundIndex != -1 {
+
+// 				obstacles = RemoveIndex(obstacles, foundIndex)
+// 				isObstacleExist = true
+// 				continue
+// 			}
+
+// 			sumAvailableSq++
+
+// 			rowIndex--
+// 		}
+// 	} else {
+// 		sumAvailableSq += (rQ - 1)
+// 	}
+
+// 	// Down
+// 	if len(obstacles) > 0 {
+// 		rowIndex = int32(rQ) + 1
+// 		columnIndex = int32(cQ)
+// 		isObstacleExist = false
+// 		for rowIndex <= n && isObstacleExist == false {
+// 			foundIndex = isObstacleExistInSquare(obstacles, rowIndex, columnIndex)
+// 			if foundIndex != -1 {
+
+// 				obstacles = RemoveIndex(obstacles, foundIndex)
+// 				isObstacleExist = true
+// 				continue
+// 			}
+
+// 			sumAvailableSq++
+
+// 			rowIndex++
+// 		}
+// 	} else {
+// 		sumAvailableSq += (n - rQ)
+// 	}
+
+// 	//RightUpDiagonal
+// 	if len(obstacles) > 0 {
+// 		rowIndex = int32(rQ) - 1
+// 		columnIndex = int32(cQ) + 1
+// 		isObstacleExist = false
+// 		for rowIndex > 0 && columnIndex <= n && isObstacleExist == false {
+// 			foundIndex = isObstacleExistInSquare(obstacles, rowIndex, columnIndex)
+// 			if foundIndex != -1 {
+
+// 				obstacles = RemoveIndex(obstacles, foundIndex)
+// 				isObstacleExist = true
+// 				continue
+// 			}
+
+// 			sumAvailableSq++
+
+// 			rowIndex--
+// 			columnIndex++
+// 		}
+// 	} else {
+// 		rangeValue := (n - cQ)
+// 		if (rQ - 1) < (n - cQ) {
+// 			rangeValue = rQ - 1
+// 		}
+// 		sumAvailableSq += rangeValue
+// 	}
+
+// 	//RightDownDiagonal
+// 	if len(obstacles) > 0 {
+// 		rowIndex = int32(rQ) + 1
+// 		columnIndex = int32(cQ) + 1
+// 		isObstacleExist = false
+// 		for rowIndex <= n && columnIndex <= n && isObstacleExist == false {
+// 			foundIndex = isObstacleExistInSquare(obstacles, rowIndex, columnIndex)
+// 			if foundIndex != -1 {
+
+// 				obstacles = RemoveIndex(obstacles, foundIndex)
+// 				isObstacleExist = true
+// 				continue
+// 			}
+
+// 			sumAvailableSq++
+
+// 			rowIndex++
+// 			columnIndex++
+// 		}
+// 	} else {
+// 		rangeValue := (n - cQ)
+// 		if (n - rQ) < (n - cQ) {
+// 			rangeValue = n - rQ
+// 		}
+// 		sumAvailableSq += rangeValue
+// 	}
+
+// 	//LeftUpDiagonal
+// 	if len(obstacles) > 0 {
+// 		rowIndex = int32(rQ) - 1
+// 		columnIndex = int32(cQ) - 1
+// 		isObstacleExist = false
+// 		for rowIndex > 0 && columnIndex > 0 && isObstacleExist == false {
+// 			foundIndex = isObstacleExistInSquare(obstacles, rowIndex, columnIndex)
+// 			if foundIndex != -1 {
+
+// 				obstacles = RemoveIndex(obstacles, foundIndex)
+// 				isObstacleExist = true
+// 				continue
+// 			}
+
+// 			sumAvailableSq++
+
+// 			rowIndex--
+// 			columnIndex--
+// 		}
+// 	} else {
+// 		rangeValue := cQ - 1
+// 		if (rQ - 1) < (cQ - 1) {
+// 			rangeValue = rQ - 1
+// 		}
+// 		sumAvailableSq += rangeValue
+// 	}
+
+// 	//LeftDownDiagonal
+// 	if len(obstacles) > 0 {
+// 		rowIndex = int32(rQ) + 1
+// 		columnIndex = int32(cQ) - 1
+// 		isObstacleExist = false
+// 		for rowIndex <= n && columnIndex > 0 && isObstacleExist == false {
+// 			foundIndex = isObstacleExistInSquare(obstacles, rowIndex, columnIndex)
+// 			if foundIndex != -1 {
+
+// 				obstacles = RemoveIndex(obstacles, foundIndex)
+// 				isObstacleExist = true
+// 				continue
+// 			}
+
+// 			sumAvailableSq++
+
+// 			rowIndex++
+// 			columnIndex--
+// 		}
+// 	} else {
+// 		rangeValue := cQ - 1
+// 		if (n - rQ) < (cQ - 1) {
+// 			rangeValue = n - rQ
+// 		}
+// 		sumAvailableSq += rangeValue
+// 	}
+
+// 	return sumAvailableSq
+
+// }
+
+// // RemoveIndex like that
+// func RemoveIndex(s [][]int32, index int) [][]int32 {
+// 	return append(s[:index], s[index+1:]...)
+// }
+
+// func isObstacleExistInSquare(obstacles [][]int32, row int32, column int32) int {
+
+// 	returnIndex := -1
+
+// 	for index, obstacle := range obstacles {
+
+// 		if obstacle[0] == row && obstacle[1] == column {
+// 			returnIndex = index
+// 			return returnIndex
+// 		}
+// 	}
+
+// 	return returnIndex
+// }
+// func main() {
+// 	obstacles := [][]int32{{1, 1}, {5, 5}, {4, 4}, {2, 4}}
+// 	k := int32(4)
+// 	n := int32(5)
+
+// 	queensAttack(n, k, 3, 3, obstacles)
+
+// }
