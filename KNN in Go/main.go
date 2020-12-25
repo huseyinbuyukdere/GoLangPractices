@@ -76,11 +76,11 @@ func algorithmKNN(variables []variable, k int, targetVariable variable) string {
 	classMap := map[string]int{}
 
 	for i := 0; i < k; i++ {
-		val, ok := classMap[variables[i].className]
-		if ok == true {
+		val, isExist := classMap[variables[i].className]
+		if isExist == true {
 			classMap[variables[i].className] = val + 1
 		}
-		if ok == false {
+		if isExist == false {
 			classMap[variables[i].className] = 1
 		}
 	}
